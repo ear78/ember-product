@@ -1,8 +1,18 @@
 <h1>Categories Admin Page</h1>
 
+<form class="" action="index.html" method="post">
+    <label for="">ID:</label>
+        {{input value=newCategoryId}}
+    <label for="">NAME:</label>
+        {{input value="newCategoryName"}}
+    <button type="submit" {{action 'addNewCategory' newCategoryId newCategoryName}}></button>
+</form>
+
 <ul>
     {{#each model as |category|}}
         <li>ID: {{category.id}}, NAME: {{category.name}}</li>
     {{/each}}
 </ul>
+
+Category Counter: {{model.length}}
 {{outlet}}
