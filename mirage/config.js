@@ -24,9 +24,9 @@ export default function() {
     http://www.ember-cli-mirage.com/docs/v0.3.x/shorthands/
   */
 
-  // this.namespace = '/api';
+  this.namespace = '/api';
 
-  // this.get('/categories');
+  this.get('/categories');
   // this.post('/categories');
   // this.delete('/categories');
   // this.resource('/categories');
