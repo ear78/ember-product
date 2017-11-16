@@ -28,7 +28,8 @@ export default function() {
 
   this.get('/categories');
   this.post('/categories');
-  this.delete('/categories');
+  this.patch('/categories/:id');
+  this.delete('/categories/:id');
   // this.resource('/categories');
 
 }

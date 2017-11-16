@@ -5,7 +5,7 @@
   <form class="form-inline" {{action 'addNewCategory' newCategory on='submit'}}>
     <div class="form-group">
       <label for="new-category">New category:</label>
-      {{input type="text" class="form-control" id="new-category" placeholder="Category name" value=newCategoryName}}
+      {{input type="text" class="form-control" id="new-category" placeholder="Category name" value=newCategory.name}}
     </div>
     <button type="submit" class="btn btn-default">Add</button>
   </form>
@@ -41,7 +41,7 @@
       </td>
       <td>
         <button class="btn btn-xs btn-danger" {{action 'deleteCategory' category}}>Del</button>
-        <button class="btn btn-xs btn-danger" {{action 'editCategory' category}}>Edit</button>
+        <button class="btn btn-xs btn-success" {{action 'editCategory' category}}>Edit</button>
       </td>
     </tr>
     {{/unless}}
