@@ -28,13 +28,23 @@
   </thead>
   <tbody>
   {{#each model as |category|}}
+  {{#unless category.isNew}}
     <tr>
       <td>{{category.id}}</td>
-      <td>{{category.name}}</td>
+      <td {{action 'editCategory' category}}>
+          {{#if category.isEditing}}
+            {{input value=category.name}}
+            <button {{action 'updateCategory' category}}>Save</button>
+          {{else}}
+            {{category.name}}
+          {{/if}}
+      </td>
       <td>
         <button class="btn btn-xs btn-danger" {{action 'deleteCategory' category}}>Del</button>
+        <button class="btn btn-xs btn-danger" {{action 'editCategory' category}}>Edit</button>
       </td>
     </tr>
+    {{/unless}}
   {{/each}}
   </tbody>
 </table>
