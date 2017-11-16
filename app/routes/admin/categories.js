@@ -6,10 +6,24 @@ export default Ember.Route.extend({
     return this.store.findAll('category');
   },
 
+  setupController(controller, model) {
+    this._super(controller,model);
+
+    controller.set('newCategory', this.store.createRecord('category'));
+  },
+
   actions: {
 
-    addNewCategory(id, name) {
-      this.store.createRecord('category', { id, name }).save();
+    addNewCategory(newCategory) {
+      newCategory.save().then(
+          category => {
+              console.info('Response:', category);
+              this.controller.set('newCategory', this.store.createRecord('category'));
+          },
+          error => {
+              console.error('Error from server', error);
+          }
+        );
     },
 
     deleteCategory(category) {

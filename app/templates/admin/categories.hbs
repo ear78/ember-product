@@ -1,19 +1,42 @@
 <h1>Categories Admin Page</h1>
 
-<form class="" action="index.html" method="post">
-    <label for="">ID:</label>
-        {{input value=newCategoryId}}
-    <label for="">NAME:</label>
-        {{input value=newCategoryName}}
-    <button type="submit" {{action 'addNewCategory' newCategoryId newCategoryName}}>Add</button>
-</form>
+<div class="well well-sm">
 
-<ul>
-    {{#each model as |category|}}
-        <li>ID: {{category.id}}, NAME: {{category.name}}</li>
-        <button type="button" {{action 'deleteCategory' category}}>Del</button>
+  <form class="form-inline" {{action 'addNewCategory' newCategory on='submit'}}>
+    <div class="form-group">
+      <label for="new-category">New category:</label>
+      {{input type="text" class="form-control" id="new-category" placeholder="Category name" value=newCategoryName}}
+    </div>
+    <button type="submit" class="btn btn-default">Add</button>
+  </form>
+</div>
+{{#if newCategory.isError}}
+    Error!!
+    {{#each newCategory.errors as |error|}}
+        {{error}}
     {{/each}}
-</ul>
+{{/if}}
 
-Category Counter: {{model.length}}
-{{outlet}}
+<table class="table table-striped">
+  <caption>List of categories</caption>
+  <thead>
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each model as |category|}}
+    <tr>
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
+      <td>
+        <button class="btn btn-xs btn-danger" {{action 'deleteCategory' category}}>Del</button>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+
+Number of categories: {{model.length}}

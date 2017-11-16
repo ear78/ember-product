@@ -27,8 +27,8 @@ export default function() {
   this.namespace = '/api';
 
   this.get('/categories');
-  // this.post('/categories');
-  // this.delete('/categories');
+  this.post('/categories');
+  this.delete('/categories');
   // this.resource('/categories');
 
 }
