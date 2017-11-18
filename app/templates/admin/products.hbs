@@ -1,1 +1,38 @@
+<div class="well well-sm">
+
+  <form class="form-inline" {{action 'addNewProduct' model on='submit'}}>
+    <div class="form-group">
+      <label for="new-category">New product:</label>
+      {{input type="text" class="form-control" id="new-product" placeholder="Product Name" value=model.name}}
+      <label for="new-sku">Sku:</label>
+      {{input type="text" class="form-control" id="new-sku" placeholder="Sku Number" value=model.sku}}
+      <label for="new-price">Price:</label>
+      {{input type="text" class="form-control" id="new-price" placeholder="Price" value=model.unitPrice}}
+    </div>
+    <button type="submit" class="btn btn-default">Add</button>
+  </form>
+</div>
+
+<table class="table table-striped">
+  <caption>List of categories</caption>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>sku</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+      {{#each model as |product|}}
+      <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.sku}}</td>
+          <td>{{product.unitPrice}}</td>
+      </tr>
+      {{/each}}
+  </tbody>
+</table>
+
 {{outlet}}
+
+Number of products: {{model.length}}

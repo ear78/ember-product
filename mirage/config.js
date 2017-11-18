@@ -32,4 +32,7 @@ export default function() {
   this.delete('/categories/:id');
   // this.resource('/categories');
 
+  this.get('/products');
+  this.post('/products');
+
 }
