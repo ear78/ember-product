@@ -2,6 +2,10 @@ import { Factory } from 'ember-cli-mirage';
 
 export default Factory.extend({
 
-  name(i) {return `Category ${i}`}
+  name(i) {return `Category ${i}`},
+  
+  afterCreate(){
+      
+  }
 
 });

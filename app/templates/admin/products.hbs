@@ -2,6 +2,10 @@
 
   <form class="form-inline" {{action 'addNewProduct' model on='submit'}}>
     <div class="form-group">
+      {{#x-select value=currentValue on-change=(action 'selectPerson') as |xs|}}
+        {{#xs.option value=fred}}Fred Flintstone{{/xs.option}}
+        {{#xs.option value=bob}}Bob Newhart{{/xs.option}} 
+      {{/x-select}}
       <label for="new-category">New product:</label>
       {{input type="text" class="form-control" id="new-product" placeholder="Product Name" value=model.name}}
       <label for="new-sku">Sku:</label>
@@ -17,6 +21,7 @@
   <caption>List of categories</caption>
   <thead>
   <tr>
+    <th>#</th>
     <th>Product</th>
     <th>sku</th>
     <th>Price</th>
