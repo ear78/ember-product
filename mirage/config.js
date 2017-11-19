@@ -34,5 +34,6 @@ export default function() {
 
   this.get('/products');
   this.post('/products');
-
+  this.patch('/products/:id');
+  this.delete('/products/:id');
 }

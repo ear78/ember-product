@@ -7,6 +7,7 @@ export default Ember.Route.extend({
     },
 
     actions: {
+        
         addNewProduct(newProduct){
             let store = this.store;
             let product = store.createRecord('product', {
@@ -18,6 +19,27 @@ export default Ember.Route.extend({
             product.save().then(()=>{
                 console.log('model saved');
             })
+        },
+        
+        editProduct(product){
+            product.set('isEditing', true);
+        },
+        
+        cancelEdit(product){
+            product.rollbackAttributes();
+            product.set('isEditing', false);
+        },
+        
+        updateProduct(product){
+            product.save().then(
+                (product) => product.set('isEditing', false)
+            );
+        },
+        
+        deleteProduct(product){
+            product.destroyRecord();
         }
-    }
+    },
+    
+    
 });
